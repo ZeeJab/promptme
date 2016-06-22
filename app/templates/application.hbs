@@ -1,3 +1,17 @@
-<h2 id="title">Welcome to Ember</h2>
+<p {{action "toggleAbout"}} class="about-prompt__open">?</p>
+
+{{#if isShowingAbout}}
+  <div class="about-prompt__container">
+    <div class="about-prompt">
+      <p class="about-prompt__close" {{action 'hideAbout'}}>x</p>
+
+      <h1>What’s the deal?</h1>
+      <p>A new prompt is released everyday. <br>When you click to reveal the prompt a 20 minute timer starts. <br>See what you can make.</p>
+      <p>Prompt me XYZ was designed to add a little inspiration to your day.</p>
+      <p>#promptmeXYZ</p>
+      <p class="contact">Contact hi@islabell.com</p>
+    </div>
+  </div>
+{{/if}}
 
 {{outlet}}

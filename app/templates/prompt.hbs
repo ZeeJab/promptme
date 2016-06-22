@@ -1,0 +1,8 @@
+<div class="flex-column">
+  <p class="prompt">{{model.prompt}}</p>
+  {{#if model.timerDelay}}
+      <p>You have 20:00 Minutes. Ready, Set...GO!</p>
+  {{else}}
+    {{countdown-timer to=model.expiresAt}}
+  {{/if}}
+</div>
