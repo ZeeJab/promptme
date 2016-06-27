@@ -1,8 +1,12 @@
 <div class="flex-column">
-  <p class="prompt">{{model.prompt}}</p>
   {{#if model.timerDelay}}
-      <p>You have 20:00 Minutes. Ready, Set...GO!</p>
+    {{timer-message}}
   {{else}}
     {{countdown-timer to=model.expiresAt}}
   {{/if}}
+  <p class="prompt">{{model.prompt}}</p>
 </div>
+
+<object type="image/svg+xml" data="/plus-sign.svg" class="plus plus-four"></object>
+<object type="image/svg+xml" data="/plus-sign.svg" class="plus plus-three"></object>
+<object type="image/svg+xml" data="/arrows.svg" class="arrows"></object>

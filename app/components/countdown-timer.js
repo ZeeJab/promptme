@@ -19,7 +19,8 @@ export default Ember.Component.extend({
     minutes = minutes === 0 ? '' : minutes;
 
     if ((this.get('to').getTime() - Date.now()) < 0) {
-      return "🎉";
+      // return "🎉";
+      return "DONEZO!";
     }
 
     return `${minutes}:${seconds}`;

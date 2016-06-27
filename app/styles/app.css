@@ -1,13 +1,13 @@
 body {
-  background: #C3EDEA url('/background.svg') no-repeat;
-  background-position: center;
+  background: #C3EDEA;
   display: flex;
   height: 100vh;
   justify-content: center;
   align-items: center;
-  font-family: sans-serif;
-  font-weight: 200;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
   background-size: 70%;
+  position: relative;
 }
 
 .flex-column {
@@ -30,11 +30,11 @@ body {
   font-size: 150px;
   display: inline-block;
   margin: 0;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 span {
-  margin-top: 45px;
+  margin-top: 25px;
   font-size: 22px;
   text-align: right;
   left: -37px;
@@ -51,39 +51,44 @@ span {
   right: -100px;
 }
 
-.underline.underline__left:after {
+.underline.underline__left:after,
+.underline.underline__right:after {
   content: '';
   display: block;
-  height: 20px;
+  height: 30px;
   background: #4D42E6;
   position: absolute;
-  bottom: -35px;
+}
+
+.underline.underline__left:after {
+  bottom: 0;
   left: 0;
   right: -60px;
 }
 
 .underline.underline__right:after {
-  content: '';
-  display: block;
-  height: 20px;
-  background: #4D42E6;
-  position: absolute;
-  bottom: -5px;
+  bottom: 35px;
   right: -20px;
-  left: 243px;
+  left: 140px;
+}
+
+.underline__right span {
+  font-size: 100px;
+  left: -8px;
+  color: #c7f7f3;
 }
 
 .prompt-button {
   position: relative;
   border: 2px solid #4D42E6;
-  padding: 15px 50px;
+  padding: 5px 50px;
   text-transform: uppercase;
   text-decoration: none;
   background-color: white;
   color: #4D42E6;
   font-size: 18px;
   left: 90%;
-  top: -50px;
+  top: 0;
 }
 
 .prompt-button:hover {
@@ -115,13 +120,6 @@ span {
   background-color: #C3EDEA;
 }
 
-.prompt {
-  font-size: 100px;
-  color: #4D42E6;
-  text-align: center;
-  margin-bottom: 0;
-}
-
 .plus {
   position: absolute;
   width: 66px;
@@ -143,11 +141,24 @@ span {
   bottom: 20%;
 }
 
+.plus-four {
+  left: 10%;
+  top: 20%;
+}
+
 .circles {
   width: 250px;
   position: absolute;
   bottom: 13%;
   left: 20%;
+}
+
+.arrows {
+  position: absolute;
+  left: 10%;
+  bottom: 20%;
+  height: 300px;
+  z-index: -1;
 }
 
 .about-prompt__container {
@@ -172,7 +183,7 @@ span {
 
 .about-prompt__close {
   font-size: 28px;
-  left: 32px;
+  left: 37px;
   top: -10px;
 }
 
@@ -181,7 +192,7 @@ span {
   color: white;
   border: 2px solid #4D42E6;
   border-radius: 100%;
-  padding: 0px 6px;
+  padding: 0 9px;
   font-size: 18px;
   left: 28px;
   top: 5px;
@@ -203,7 +214,46 @@ span {
   text-align: right;
 }
 
+.prompt {
+  font-size: 120px;
+  color: #4D42E6;
+  text-align: center;
+  margin: 0;
+  animation: scale-down 100s;
+  animation-delay: 3s;
+}
+
 .countown-timer {
-  font-size: 250px;
+  margin-bottom: -40px;
+  font-size: 40px;
   color: white;
+  animation: scale-up 100s;
+  animation-delay: 5s;
+}
+
+.timer-message {
+  margin-bottom: -40px;
+  font-size: 23px;
+  animation: scale-down 5s ease-in;
+  color: #FF3044;
+}
+
+@keyframes scale-up {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(3);
+  }
+}
+
+@keyframes scale-down {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(.3333);
+  }
 }

@@ -6,16 +6,22 @@ export default Route.extend({
   prompt: injectService(),
 
   model() {
+    let prompt = this.get('prompt');
+
+    let hasActivePrompt = prompt.hasActivePrompt();
+
     let model = {
-      timerDelay: true,
-      prompt: this.get('prompt').getPrompt(),
-      expiresAt: this.get('prompt').getExpiresAt()
+      timerDelay: !hasActivePrompt,
+      prompt: prompt.getPrompt(),
+      expiresAt: prompt.getExpiresAt()
     };
 
-    setTimeout(() => {
-      // model.timerDelay = false;
-      Ember.set(model, 'timerDelay', false);
-    }, 1000);
+    if (!hasActivePrompt) {
+      setTimeout(() => {
+        // model.timerDelay = false;
+        Ember.set(model, 'timerDelay', false);
+      }, 3000);
+    }
 
     return model;
   }
