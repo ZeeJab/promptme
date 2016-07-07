@@ -1,1 +1,27 @@
-{{remainingTime}}
+{{#if countdown.countdownFinished}}
+  <div class="secondary">
+    <p class="small-text align-center">Yay!!! You did it. Tune in tomorrow for another prompt.</p>
+    <h2 class="large-text">DONEZO!</h2>
+    <p class="small-text align-right">#promptmeXYZ</p>
+
+    <object type="image/svg+xml" data="/plus-sign.svg" class="plus plus-two"></object>
+    <object type="image/svg+xml" data="/plus-sign.svg" class="plus plus-three"></object>
+    <object type="image/svg+xml" data="/circles.svg" class="circles"></object>
+    <object type="image/svg+xml" data="/circles-two.svg" class="circles-two"></object>
+
+    <div class="past-prompts__container">
+      <p class="arrow bounce"></p>
+      {{#each countdown.pastPrompts as |prompt|}}
+        <div class="past-prompt">{{prompt}}</div>
+      {{/each}}
+    </div>
+  </div>
+{{else}}
+  {{#if countdown.showingTimer}}
+    <div class="remaining-time">{{remainingTime}}</div>
+  {{/if}}
+  <p class="prompt">{{countdown.prompt}}</p>
+  <object type="image/svg+xml" data="/plus-sign.svg" class="plus plus-four"></object>
+  <object type="image/svg+xml" data="/plus-sign.svg" class="plus plus-three"></object>
+  <object type="image/svg+xml" data="/arrows.svg" class="arrows"></object>
+{{/if}}

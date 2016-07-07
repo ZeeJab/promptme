@@ -1,4 +1,5 @@
 import Service from 'ember-service';
+import Countdown from 'promptme/models/countdown';
 
 const prompts = [
   // "Zoma is boma",
@@ -26,11 +27,84 @@ const prompts = [
   "Don't let me down",
   "I hate you, I love you",
   "Sleeping alone",
-  "Take it slow",
   "Better, not more",
   "When all hope is lost",
   "Slow and steady",
   "Tall drink of water",
+  "Many hands make light work",
+  "Shut up and dance ",
+  "It's a four letter word",
+  "Turn up the volume",
+  "Brain freeze!",
+  "Keep it simple",
+  "Dig a little deeper",
+  "Connect the dots",
+  "Tidy up that mess!",
+  "I get up again",
+  "Free lunch",
+  "Fool me twice",
+  "Take it all away",
+  "Staring at the sun",
+  "Peachy keen",
+  "Twinkle toes",
+  "Odd one out",
+  "Smell the roses",
+  "Yesterday's news",
+  "Breakfast special",
+  "Burnt toast",
+  "The good stuff",
+  "Are you serious?",
+  "Can't feel my face",
+  "Food for thought",
+  "Middle of nowhere",
+  "On the edge",
+  "Peering into space",
+  "It takes a village",
+  "Keeping secrets",
+  "It's oh so quiet",
+  "Drip drip drip",
+  "BOOM! There it is",
+  "She is free",
+  "Still floating",
+  "Power of nice",
+  "Oh yes, I'm a mess",
+  "I will not be awkward today",
+  "Why is he kissing her?",
+  "Give it up",
+  "Crazy like a coconut",
+  "Get your skates on",
+  "Tootie fruity",
+  "This is the spot",
+  "Plants and people",
+  "Thanks for having me",
+  "Are you still listening?",
+  "Tuesday morning",
+  "What have you to loose?",
+  "She's the blues",
+  "Drunk on light",
+  "Unfolding midnight",
+  "Catch the sparrow",
+  "Be my baby",
+  "Wait by the window",
+  "About to slip down",
+  "Too tired for fun",
+  "We all scream for...",
+  "Sleep walk",
+  "Match point",
+  "Singing the same song",
+  "Second hand parts",
+  "Jump the fence",
+  "Collect your things",
+  "Coffee in the shower",
+  "Windows wide open",
+  "Bite your tongue",
+  "Colorful past",
+  "Quick dry paint",
+  "Dude, I can't",
+  "Piece of cake",
+  "Up and away",
+  "Hello yellow",
+  "I want you",
   "Secrets",
   "Moon",
   "Dust",
@@ -45,10 +119,12 @@ const prompts = [
   "Ooops, I think i've fallen in love",
   "A city in the 80s",
   "Living on my own",
+  "Take it slow",
   "Sharing spaces trading places"
 ];
 
-const PROMPT_TIMEOUT = 100 * 1000;
+export const PROMPT_TIMEOUT = 30 * 1000;
+export const PROMPT_DELAY = 3 * 1000;
 
 export default Service.extend({
   init() {
@@ -79,24 +155,26 @@ export default Service.extend({
     return isStillActive(info);
   },
 
-  getPrompt() {
+  getCountdown() {
+    let hasActivePrompt = this.hasActivePrompt();
     let info = this.get('info');
 
-    if (!info || !isStillActive(info)) {
+    if (!hasActivePrompt) {
       info = this.buildPromptInfo();
+    } else {
+      info.didRefresh = true;
     }
 
-    return prompts[info.randomPromptIndex];
+    info.prompt = prompts[info.randomPromptIndex];
+    info.pastPrompts = this.getPastPrompts();
+
+    return Countdown.create(info);
   },
 
-  getExpiresAt() {
-    let info = this.get('info');
+  getPastPrompts() {
+    let promptIndex = Math.floor((Date.now() - (new Date(0))) / (1000 * 60 * 60 * 24)) % prompts.length;
 
-    if (!info || !isStillActive(info)) {
-      info = this.buildPromptInfo();
-    }
-
-    return new Date(info.timestamp + PROMPT_TIMEOUT + 10000);
+    return prompts.slice(0, promptIndex-1);
   },
 
   buildPromptInfo() {

@@ -1,12 +1,12 @@
-<div class="flex-column">
-  {{#if model.timerDelay}}
-    {{timer-message}}
-  {{else}}
-    {{countdown-timer to=model.expiresAt}}
-  {{/if}}
-  <p class="prompt">{{model.prompt}}</p>
-</div>
+{{#if model.didRefresh}}
+  <div class="align-right refresh-message__container">
+    <p class="refresh-message">Woops! You refreshed.</p>
+    <p class="refresh-message">Here’s where you left off…</p>
+  </div>
+{{/if}}
 
-<object type="image/svg+xml" data="/plus-sign.svg" class="plus plus-four"></object>
-<object type="image/svg+xml" data="/plus-sign.svg" class="plus plus-three"></object>
-<object type="image/svg+xml" data="/arrows.svg" class="arrows"></object>
+{{#if model.showingCountdown}}
+  {{timer-message}}
+{{/if}}
+
+{{countdown-timer countdown=model}}
