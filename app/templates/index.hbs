@@ -1,13 +1,15 @@
-{{#link-to 'prompt' class="prompt-button"}}Today's Prompt{{/link-to}}
+<div class="homepage__container">
+  {{#link-to 'prompt' class="prompt-button"}}Today's Prompt{{/link-to}}
 
-<div class="hero-text">
-  <h1 class="underline underline__left">Prompt</h1>
-  <span>A daily 20 minute creative challenge</span>
-  <h1 class="underline underline__right">me.</h1>
+  <div class="hero-text">
+    <h1 class="underline underline__left">Prompt</h1>
+    <span>A daily 20 minute creative challenge</span>
+    <h1 class="underline underline__right">me.</h1>
+  </div>
+
+  <object type="image/svg+xml" data="/get-creative-clock.svg"class="get-creative-clock"></object>
+
+  <object type="image/svg+xml" data="/background.svg" class="background-shapes"></object>
 </div>
 
-<object type="image/svg+xml" data="/plus-sign.svg" class="plus plus-one"></object>
-<object type="image/svg+xml" data="/plus-sign.svg" class="plus plus-two"></object>
-<object type="image/svg+xml" data="/plus-sign.svg" class="plus plus-three"></object>
-<object type="image/svg+xml" data="/circles.svg" class="circles"></object>
 {{outlet}}

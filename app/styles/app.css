@@ -37,17 +37,49 @@
   src:url("../fonts/circular-black.woff") format("woff"), url("../fonts/circular-black.ttf") format("truetype");
 }
 
+/* START SHAPES */
+.background-shapes {
+  position: absolute;
+  top: -10%;
+  left: 6%;
+  z-index: -3;
+}
+
+.timer-message__container .get-creative-clock {
+  width: 400px;
+  animation: clock-turn 30s linear;
+}
+
+.homepage__container .get-creative-clock {
+  width: 140px;
+  position: absolute;
+  bottom: 22%;
+  left: 10%;
+  z-index: -3;
+}
+
+.countdown-shapes {
+  width: 70%;
+}
+
+/* END SHAPES */
+
 body {
   background: #C3EDEA;
-  display: flex;
   min-height: 700px;
-  justify-content: center;
-  align-items: center;
   font-family: Circular-Pro-Book;
   font-weight: 400;
-  background-size: 70%;
-  position: relative;
   margin: 0;
+}
+
+.homepage__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+  min-height: 700px;
 }
 
 .secondary {
@@ -66,7 +98,7 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  margin-left: -80px;
+  margin-left: 23%;
 }
 
 .underline {
@@ -82,8 +114,6 @@ span {
   margin-top: 38px;
   font-size: 18px;
   text-align: right;
-  left: -37px;
-  position: relative;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
   letter-spacing: .15em;
@@ -136,10 +166,10 @@ span {
   background-color: white;
   color: #4D42E6;
   font-size: 13px;
-  left: 90%;
-  top: 0;
   letter-spacing: .15em;
   transition: background-color 0.5s ease;
+  margin-right: 100px;
+  margin-bottom: 40px;
 }
 
 .prompt-button:hover {
@@ -169,73 +199,6 @@ span {
   border: 2px solid #4D42E6;
   z-index: -2;
   background-color: #C3EDEA;
-}
-
-.plus {
-  position: absolute;
-  width: 66px;
-}
-
-.plus-one {
-  left: 140px;
-  top: 60%;
-}
-
-.plus-two {
-  right: 420px;
-  top: 30%;
-}
-
-.plus-three {
-  transform: rotate(90deg);
-  right: 15%;
-  bottom: 20%;
-}
-
-.plus-four {
-  left: 10%;
-  top: 20%;
-}
-
-.countdown-timer .circles {
-  width: 250px;
-  position: absolute;
-  top: 20px;
-  left: 70%;
-}
-
-.countdown-timer .plus-three {
-  transform: rotate(90deg);
-  right: 15%;
-  top: 6%;
-}
-
-.countdown-timer .plus-two {
-  left: 10%;
-  top: 1%;
-}
-
-.countdown-timer .circles-two {
-  width: 250px;
-  position: absolute;
-  top: 4.5%;
-  left: 10%;
-}
-
-
-.circles {
-  width: 250px;
-  position: absolute;
-  bottom: 13%;
-  left: 20%;
-}
-
-.arrows {
-  position: absolute;
-  left: 10%;
-  bottom: 20%;
-  height: 300px;
-  z-index: -1;
 }
 
 .about-prompt__container {
@@ -372,14 +335,6 @@ span {
   font-size: 100px;
 }
 
-.get-creative-clock {
-  width: 400px;
-  animation: clock-turn 30s linear;
-}
-.countdown-shapes {
-  width: 70%;
-}
-
 .remaining-time__container {
   display: flex;
   flex-direction: column;
@@ -437,4 +392,52 @@ span {
   30%{ transform: scale(1,0.8) translate(0px, 10px); }
   75%{ transform: scale(1,1.1) translate(0px, -25px); }
   100% { transform: scale(1,1) translate(0px, 0px); }
+}
+
+@media (max-width: 768px) {
+  .prompt-button {
+    order: 4;
+    align-self: center;
+    margin-right: 0;
+    margin-top: 40px;
+  }
+
+  .hero-text {
+    margin-left: auto;
+    padding: 0 20px;
+  }
+
+  span {
+    order: 3;
+    text-align: center;
+    z-index: 1;
+    padding: 0 40px;
+  }
+
+  .underline__right {
+    right: 0;
+  }
+}
+
+@media (max-width: 425px) {
+  .underline {
+    font-size: 80px;
+  }
+
+  .underline.underline__left:after {
+    bottom: -15px;
+    left: 5px;
+    right: 0;
+  }
+
+  .underline.underline__right:after {
+    bottom: 0px;
+    right: 0;
+    left: 142px;
+  }
+
+  .underline.underline__left:after,
+  .underline.underline__right:after {
+    height: 15px;
+  }
 }
