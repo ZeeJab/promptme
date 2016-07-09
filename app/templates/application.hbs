@@ -6,12 +6,20 @@
       <p class="about-prompt__close" {{action 'hideAbout'}}>x</p>
 
       <h1>What’s the deal?</h1>
-      <p>A new prompt is released everyday. <br>When you click to reveal the prompt a 20 minute timer starts. <br>See what you can make.</p>
-      <p>Prompt me XYZ was designed to add a little inspiration to your day.</p>
+      <p>Take 20 mintes out of your day to be creative.</p>
+      <p>Every morning a new prompt is released into the world.<br>Click to see it, and a 20 minute timer starts.<br>See what you can make.</p>
       <p>#promptmeXYZ</p>
       <p class="contact">Contact hi@islabell.com</p>
     </div>
+
+    {{!-- <div class="past-prompts__container"> --}}
+      <p class="arrow bounce"></p>
+      {{#each pastPrompts as |prompt|}}
+        <div class="past-prompt">{{prompt}}</div>
+      {{/each}}
+    {{!-- </div> --}}
   </div>
+
 {{/if}}
 
 {{outlet}}
