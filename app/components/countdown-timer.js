@@ -7,10 +7,11 @@ export default Ember.Component.extend({
 
   didInsertElement() {
     let seconds = this.get('countdown.remainingTime') + 1;
+    // let seconds = 3;
 
     if (this.get('countdown.showingTimer')) {
-      this.$('p').css('animation', `scale-down linear ${seconds}s`);
-      this.$('.remaining-time').css('animation', `scale-up linear ${seconds}s`);
+      // this.$('p').css('animation', `scale-down linear ${seconds}s`);
+      // this.$('.remaining-time').css('animation', `scale-up linear ${seconds}s`);
     }
   },
 

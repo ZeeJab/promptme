@@ -1,16 +1,18 @@
-import Ember from 'ember';
+import run from 'ember-runloop';
+import Component from 'ember-component';
 
-export default Ember.Component.extend({
+export default Component.extend({
+  tagName: 'p',
   classNames: 'timer-message',
-  timerMessage: "READY",
+  timerMessage: "3",
 
   didInsertElement() {
-    Ember.run.later(() => {
-      this.set('timerMessage', "SET");
-    }, 1000);
-
-    Ember.run.later(() => {
-      this.set('timerMessage', "GO!");
+    run.later(() => {
+      this.set('timerMessage', "2");
     }, 2000);
+
+    run.later(() => {
+      this.set('timerMessage', "1");
+    }, 4000);
   }
 });

@@ -8,20 +8,15 @@
     <object type="image/svg+xml" data="/plus-sign.svg" class="plus plus-three"></object>
     <object type="image/svg+xml" data="/circles.svg" class="circles"></object>
     <object type="image/svg+xml" data="/circles-two.svg" class="circles-two"></object>
-
-    <div class="past-prompts__container">
-      <p class="arrow bounce"></p>
-      {{#each countdown.pastPrompts as |prompt|}}
-        <div class="past-prompt">{{prompt}}</div>
-      {{/each}}
-    </div>
   </div>
 {{else}}
-  {{#if countdown.showingTimer}}
-    <div class="remaining-time">{{remainingTime}}</div>
-  {{/if}}
-  <p class="prompt">{{countdown.prompt}}</p>
-  <object type="image/svg+xml" data="/plus-sign.svg" class="plus plus-four"></object>
-  <object type="image/svg+xml" data="/plus-sign.svg" class="plus plus-three"></object>
-  <object type="image/svg+xml" data="/arrows.svg" class="arrows"></object>
+  <div class="remaining-time__container">
+    {{#if countdown.showingTimer}}
+      <div class="remaining-time">{{remainingTime}}</div>
+    {{/if}}
+    <p class="prompt">{{countdown.prompt}}</p>
+
+    <object type="image/svg+xml" data="/countdown-shapes.svg"class="countdown-shapes"></object>
+  </div>
+
 {{/if}}

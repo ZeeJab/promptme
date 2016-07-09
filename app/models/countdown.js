@@ -9,7 +9,7 @@ export default EmberObject.extend(Evented, {
   init() {
     let didRefresh = this.get('didRefresh');
 
-    if (!didRefresh) {
+    if (!didRefresh && !this.get('didComplete')) {
       this.set('showingCountdown', true);
       this.set('showingTimer', false);
       Ember.run.later(() => {

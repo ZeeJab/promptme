@@ -5,8 +5,27 @@
   </div>
 {{/if}}
 
+{{#if model.showingTimer}}
+  {{countdown-timer countdown=model}}
+{{/if}}
+
+{{#if model.showingCountdown}}
+  <div class="timer-message__container">
+    <object type="image/svg+xml" data="/get-creative-clock.svg"class="get-creative-clock">
+    </object>
+    {{timer-message}}
+  </div>
+{{/if}}
+
+{{!-- {{#if model.didRefresh}}
+  <div class="align-right refresh-message__container">
+    <p class="refresh-message">Woops! You refreshed.</p>
+    <p class="refresh-message">Here’s where you left off…</p>
+  </div>
+{{/if}}
+
 {{#if model.showingCountdown}}
   {{timer-message}}
 {{/if}}
 
-{{countdown-timer countdown=model}}
+{{countdown-timer countdown=model}} --}}

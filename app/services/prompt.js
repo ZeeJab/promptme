@@ -123,8 +123,8 @@ const prompts = [
   "Sharing spaces trading places"
 ];
 
-export const PROMPT_TIMEOUT = 30 * 1000;
-export const PROMPT_DELAY = 3 * 1000;
+export const PROMPT_TIMEOUT = 1197 * 1000;
+export const PROMPT_DELAY = 6 * 1000;
 
 export default Service.extend({
   init() {
@@ -137,11 +137,6 @@ export default Service.extend({
         info = null;
         console.error("Couldn't parse localStorage.promptMe", e);
       }
-    }
-
-    if (info && !isStillActive(info)) {
-      delete localStorage.promptMe;
-      info = null;
     }
 
     this.set('info', info);
@@ -159,13 +154,21 @@ export default Service.extend({
     let hasActivePrompt = this.hasActivePrompt();
     let info = this.get('info');
 
-    if (!hasActivePrompt) {
+    console.log(info);
+    // console.log('didCompletePrompt', didCompletePrompt(info));
+    // console.log('isStillActive', isStillActive(info));
+
+    if (!info || !didCompletePrompt(info)) {
       info = this.buildPromptInfo();
-    } else {
+    } else if (isStillActive(info)) {
       info.didRefresh = true;
     }
 
-    info.prompt = prompts[info.randomPromptIndex];
+    if (didCompletePrompt(info)) {
+      info.didComplete = true;
+    }
+
+    info.prompt = prompts[info.promptIndex];
     info.pastPrompts = this.getPastPrompts();
 
     return Countdown.create(info);
@@ -178,12 +181,10 @@ export default Service.extend({
   },
 
   buildPromptInfo() {
-    // Calculate number of days since epoch, then take that modulo the number
-    // of prompt entries, which determines which one is today's prompt.
-    let randomPromptIndex = Math.floor((Date.now() - (new Date(0))) / (1000 * 60 * 60 * 24)) % prompts.length;
     let timestamp = Date.now();
+    let promptIndex = getPromptIndex();
 
-    let promptInfo = { randomPromptIndex, timestamp };
+    let promptInfo = { promptIndex, timestamp };
 
     localStorage.promptMe = JSON.stringify(promptInfo);
     this.set('info', promptInfo);
@@ -191,6 +192,16 @@ export default Service.extend({
     return promptInfo;
   }
 });
+
+function getPromptIndex() {
+  // Calculate number of days since epoch, then take that modulo the number
+  // of prompt entries, which determines which one is today's prompt.
+  return Math.floor((Date.now() - (new Date(0))) / (1000 * 60 * 60 * 24)) % prompts.length;
+}
+
+function didCompletePrompt(info) {
+  return info.promptIndex === getPromptIndex();
+}
 
 function isStillActive(info) {
   return (Date.now() - info.timestamp) < PROMPT_TIMEOUT;

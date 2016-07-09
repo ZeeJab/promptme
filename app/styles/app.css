@@ -139,6 +139,7 @@ span {
   left: 90%;
   top: 0;
   letter-spacing: .15em;
+  transition: background-color 0.5s ease;
 }
 
 .prompt-button:hover {
@@ -291,29 +292,38 @@ span {
 }
 
 .prompt {
-  font-size: 120px;
+  font-size: 40px;
   color: #4D42E6;
   text-align: center;
   margin: 0;
   font-family: circular-black;
+  animation: scale-down 3s linear;
 }
 
 .countdown-timer {
   margin-bottom: 0;
-  font-size: 100px;
+  font-size: 250px;
   color: white;
   font-family: circular-black;
+  min-width: 700px;
 }
 
 .remaining-time {
   text-align: center;
+  animation: scale-up 3s linear;
+}
+
+.timer-message__container {
+  position: relative;
 }
 
 .timer-message {
-  margin-bottom: -40px;
-  font-size: 23px;
-  animation: text-bounce 0.75s infinite;
-  color: white;
+  font-size: 200px;
+  color: #4D42E6;
+  position: absolute;
+  top: 80px;
+  left: 140px;
+  margin: 0;
 }
 
 .refresh-message__container {
@@ -362,14 +372,33 @@ span {
   font-size: 100px;
 }
 
+.get-creative-clock {
+  width: 400px;
+  animation: clock-turn 30s linear;
+}
+.countdown-shapes {
+  width: 70%;
+}
+
+.remaining-time__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes clock-turn {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
 @keyframes scale-up {
-  0% { transform: scale(1); }
-  100% { transform: scale(2.5); }
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
 }
 
 @keyframes scale-down {
-  0% { transform: scale(1); }
-  100% { transform: scale(.3333); }
+  0% { transform: scale(3); }
+  100% { transform: scale(1); }
 }
 
 /* BOUNCE */
@@ -400,8 +429,6 @@ span {
 }
 
 .bounce {
-  -moz-animation: bounce 2s infinite;
-  -webkit-animation: bounce 2s infinite;
   animation: bounce 2s infinite;
 }
 
@@ -411,4 +438,3 @@ span {
   75%{ transform: scale(1,1.1) translate(0px, -25px); }
   100% { transform: scale(1,1) translate(0px, 0px); }
 }
-
