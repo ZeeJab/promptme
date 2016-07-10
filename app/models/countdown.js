@@ -8,9 +8,9 @@ import { PROMPT_TIMEOUT, PROMPT_DELAY } from "promptme/services/prompt";
 export default EmberObject.extend(Evented, {
   init() {
     let didRefresh = this.get('didRefresh');
-    // debugger;
+    let didComplete = this.get('didComplete');
 
-    if (!didRefresh && !this.get('didComplete')) {
+    if (!didRefresh && !didComplete) {
       this.set('showingCountdown', true);
       this.set('showingTimer', false);
       Ember.run.later(() => {

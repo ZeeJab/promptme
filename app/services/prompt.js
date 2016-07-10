@@ -152,21 +152,13 @@ export default Service.extend({
   },
 
   getCountdown() {
-    let hasActivePrompt = this.hasActivePrompt();
     let info = this.get('info');
 
-    console.log(info);
-    // console.log('didCompletePrompt', didCompletePrompt(info));
-    // console.log('isStillActive', isStillActive(info));
-    console.log('info.didRefresh', info.didRefresh);
-
-    if (!info || !didCompletePrompt(info)) {
+    if (!info) {
       info = this.buildPromptInfo();
     } else if (isStillActive(info)) {
       info.didRefresh = true;
-    }
-
-    if (didCompletePrompt(info)) {
+    } else if (didCompletePrompt(info)) {
       info.didComplete = true;
     }
 
