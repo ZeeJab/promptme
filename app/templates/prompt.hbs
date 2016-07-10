@@ -1,20 +1,22 @@
-{{#if model.didRefresh}}
-  <div class="align-right refresh-message__container">
-    <p class="refresh-message">Woops! You refreshed.</p>
-    <p class="refresh-message">Here’s where you left off…</p>
-  </div>
-{{/if}}
+<div class="prompt-timer__container">
+  {{#if model.didRefresh}}
+    <div class="align-right refresh-message__container">
+      <p class="refresh-message">Woops! You refreshed.</p>
+      <p class="refresh-message">Here’s where you left off…</p>
+    </div>
+  {{/if}}
 
-{{#if model.showingTimer}}
-  {{countdown-timer countdown=model}}
-{{/if}}
+  {{#if model.showingTimer}}
+    {{countdown-timer countdown=model}}
+  {{/if}}
 
-{{#if model.showingCountdown}}
-  <div class="timer-message__container">
-    <object type="image/svg+xml" data="/get-creative-clock.svg"class="get-creative-clock"></object>
-    {{timer-message}}
-  </div>
-{{/if}}
+  {{#if model.showingCountdown}}
+    <div class="timer-message__container">
+      <object type="image/svg+xml" data="/get-creative-clock.svg"class="get-creative-clock"></object>
+      {{timer-message}}
+    </div>
+  {{/if}}
+</div>
 
 {{!-- {{#if model.didRefresh}}
   <div class="align-right refresh-message__container">

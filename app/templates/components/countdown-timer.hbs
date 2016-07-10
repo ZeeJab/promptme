@@ -1,14 +1,15 @@
 {{#if countdown.countdownFinished}}
-  <div class="secondary">
-    <p class="small-text align-center">Yay!!! You did it. Tune in tomorrow for another prompt.</p>
-    <h2 class="large-text">DONEZO!</h2>
-    <p class="small-text align-right">#promptmeXYZ</p>
+  <p class="small-text align-center">Yay!!! You did it. Tune in tomorrow for another prompt.</p>
+  <h2 class="large-text">DONEZO!</h2>
+  <span class="circle circle-top"></span>
+  <span class="circle circle-top-middle"></span>
+  <span class="circle circle-top-right"></span>
+  <span class="circle circle-bottom-left"></span>
+  <span class="circle circle-bottom-middle"></span>
+  <span class="circle circle-bottom-right"></span>
+  <p class="small-text align-right">#promptmeXYZ</p>
 
-    <object type="image/svg+xml" data="/plus-sign.svg" class="plus plus-two"></object>
-    <object type="image/svg+xml" data="/plus-sign.svg" class="plus plus-three"></object>
-    <object type="image/svg+xml" data="/circles.svg" class="circles"></object>
-    <object type="image/svg+xml" data="/circles-two.svg" class="circles-two"></object>
-  </div>
+  <object type="image/svg+xml" data="/countdown-shapes.svg"class="countdown-shapes"></object>
 {{else}}
   <div class="remaining-time__container">
     {{#if countdown.showingTimer}}
