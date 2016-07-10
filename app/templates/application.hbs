@@ -5,21 +5,18 @@
     <div class="about-prompt">
       <p class="about-prompt__close" {{action 'hideAbout'}}>x</p>
 
-      <h1>What’s the deal?</h1>
-      <p>Take 20 mintes out of your day to be creative.</p>
-      <p>Every morning a new prompt is released into the world.<br>Click to see it, and a 20 minute timer starts.<br>See what you can make.</p>
-      <p>#promptmeXYZ</p>
-      <p class="contact">Contact hi@islabell.com</p>
+      <p class="about-text contact">Contact hi@islabell.com</p>
+      <h1 class="about-header">What is this thing?</h1>
+      <p class="about-text">It’s a daily 20 minute creative challenge. Every morning we release a new prompt into the world. Visit the site and time yourself or something. See what you can make!</p>
     </div>
 
-    {{!-- <div class="past-prompts__container"> --}}
-      <p class="arrow bounce"></p>
+    <div class="past-prompts__container">
+      <p class="past-prompts__header">Past Prompts</p>
       {{#each pastPrompts as |prompt|}}
         <div class="past-prompt">{{prompt}}</div>
       {{/each}}
-    {{!-- </div> --}}
+    </div>
   </div>
-
 {{/if}}
 
 {{outlet}}

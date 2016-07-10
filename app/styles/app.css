@@ -190,7 +190,6 @@ span {
   font-weight: 400;
   letter-spacing: .15em;
 }
-}
 
 .underline__left {
   text-align: left;
@@ -283,14 +282,17 @@ span {
   right: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 100px;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 20% 40px 0 40px;
   z-index: 2;
+  overflow: scroll;
 }
 
 .about-prompt {
-  width: 700px;
   margin: 0 auto;
+  width: 80%;
+  margin-top: -180px;
 }
 
 .about-prompt__close {
@@ -323,8 +325,22 @@ span {
   position: absolute;
 }
 
-.contact {
-  text-align: right;
+.about-header {
+  font-size: 150px;
+  margin: 0;
+}
+
+.about-text {
+  width: 80%;
+  margin: 40px 0 60px 0;
+  letter-spacing: .05em;
+  font-size: 22px;
+  font-family: Circular-Pro-Book;
+  color: white;
+}
+
+.about-text.contact {
+  margin: 0;
 }
 
 .prompt {
@@ -412,20 +428,42 @@ span {
 }
 
 .past-prompts__container {
-  margin-top: 100px;
-  padding-top: 100px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.past-prompts__header {
+  text-transform: uppercase;
   position: relative;
+  letter-spacing: .1em;
+  margin-bottom: 50px;
+  color: white;
+}
+
+.past-prompts__header:after {
+  background-color: #C3EDEA;
+  bottom: 0;
+  content: "";
+  height: 6px;
+  margin: auto 0 auto -55px;
+  position: absolute;
+  top: -40px;
+  width: 40px;
+  left: 55px;
 }
 
 .past-prompt {
-  height:40vh;
-  font-size: 100px;
+  font-size: 80px;
+  margin: 0px 0 75px 0;
+  text-transform: lowercase;
 }
 
 .remaining-time__container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 550px;
+  width: 100%;
 }
 
 @keyframes clock-turn {
@@ -457,6 +495,18 @@ span {
 }
 
 @media (max-width: 768px) {
+  .about-header {
+    font-size: 80px;
+  }
+
+  .about-text {
+    font-size: 19px;
+  }
+
+  .about-prompt {
+    margin-top: 0;
+  }
+
   .prompt-button {
     order: 4;
     align-self: center;
@@ -504,8 +554,17 @@ span {
 }
 
 @media (max-width: 425px) {
+  .past-prompt {
+    font-size: 40px;
+    margin-bottom: 35px;
+  }
+
   .underline {
     font-size: 80px;
+  }
+
+  .underline__left {
+    left: 0;
   }
 
   .underline.underline__left:after {
@@ -517,12 +576,21 @@ span {
   .underline.underline__right:after {
     bottom: 0px;
     right: 0;
-    left: 142px;
+    left: 223px;
   }
 
   .underline.underline__left:after,
   .underline.underline__right:after {
     height: 15px;
+  }
+
+  .countdown-timer {
+    font-size: 100px;
+  }
+
+  .countdown-shapes {
+    width: 30%;
+    margin-top: -20px;
   }
 
   .timer-message__container .get-creative-clock {
@@ -533,6 +601,10 @@ span {
     font-size: 150px;
   }
 
+  .prompt {
+    font-size: 20px;
+  }
+
   .large-text {
     display: none;
   }
@@ -541,5 +613,12 @@ span {
     width: 320px;
     text-align: center;
     margin: 10px;
+  }
+
+  .align-right.refresh-message__container {
+    text-align: left;
+    margin: 0 40px;
+    right: 0;
+    left: 40px;
   }
 }
