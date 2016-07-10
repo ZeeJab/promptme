@@ -123,7 +123,8 @@ const prompts = [
   "Sharing spaces trading places"
 ];
 
-export const PROMPT_TIMEOUT = 1197 * 1000;
+export const PROMPT_TIMEOUT = 11 * 1000;
+// export const PROMPT_TIMEOUT = 1197 * 1000;
 export const PROMPT_DELAY = 6 * 1000;
 
 export default Service.extend({
@@ -157,6 +158,7 @@ export default Service.extend({
     console.log(info);
     // console.log('didCompletePrompt', didCompletePrompt(info));
     // console.log('isStillActive', isStillActive(info));
+    console.log('info.didRefresh', info.didRefresh);
 
     if (!info || !didCompletePrompt(info)) {
       info = this.buildPromptInfo();
