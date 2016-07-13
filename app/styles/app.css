@@ -494,6 +494,64 @@ span {
   100% { transform: scale(1,1) translate(0px, 0px); }
 }
 
+.falling-shapes {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 0;
+}
+
+.falling-shape {
+  left: 0;
+  margin: auto;
+  position: absolute;
+  width: 30px;
+  right: 0;
+  transform: translateY(0%);
+}
+
+@keyframes falling-left-ani {
+  0%   { transform: translateY(-350%) rotate(100deg); }
+  100% { transform: translateY(0%)    rotate(0deg); }
+}
+@keyframes falling-right-ani {
+  0%   { transform: translateY(-250%) rotate(-100deg); }
+  100% { transform: translateY(0%)    rotate(0deg); }
+}
+
+  .falling-shape.one {
+    animation: falling-left-ani 9s 1 ease-out;
+    right: 60%;
+    top: 35px;
+  }
+  .falling-shape.two {
+    animation: falling-left-ani 17s 1 ease-out;
+    left: 50%;
+    top: 360px;
+  }
+  .falling-shape.three {
+    animation: falling-right-ani 9s 1 ease-out;
+    left: 69%;
+    top: 52px;
+  }
+  .falling-shape.four {
+    animation: falling-left-ani 11s 1 ease-out;
+    right: 85%;
+    top: 450px;
+  }
+  .falling-shape.five {
+    animation: falling-right-ani 13s 1 ease-out;
+    right: 15%;
+    top: 300px;
+  }
+
+.falling-shape {
+  transform: translateY(0%);
+  width: 30px;
+}
+
 @media (max-width: 768px) {
   .about-header {
     font-size: 80px;
@@ -554,6 +612,10 @@ span {
 }
 
 @media (max-width: 425px) {
+
+  .falling-shape {
+    width: 20px;
+  }
   .past-prompt {
     font-size: 40px;
     margin-bottom: 35px;
