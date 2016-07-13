@@ -4,11 +4,11 @@
 	 viewBox="0 0 574.7 76.4" style="enable-background:new 0 0 574.7 76.4;" xml:space="preserve">
 <style type="text/css">
 	.st0{clip-path:url(#SVGID_2_);}
-	.st1{clip-path:url(#SVGID_4_);fill:#FFFFFF;}
+	.st1{clip-path:url(#SVGID_4_);fill:#FFFFFF; animation: shape-clock-turn 599s linear; }
 	.st2{clip-path:url(#SVGID_6_);}
-	.st3{clip-path:url(#SVGID_8_);fill:#FFFFFF;}
+	.st3{clip-path:url(#SVGID_8_);fill:#FFFFFF; animation: shape-clock-turn 899s linear; }
 	.st4{clip-path:url(#SVGID_10_);}
-	.st5{clip-path:url(#SVGID_12_);fill:#FFFFFF;}
+	.st5{clip-path:url(#SVGID_12_);fill:#FFFFFF; animation: shape-clock-turn 1199s linear; }
 	.st6{clip-path:url(#SVGID_14_);}
 	.st7{clip-path:url(#SVGID_16_);fill:#4D42E6;}
 	.st8{clip-path:url(#SVGID_18_);}
