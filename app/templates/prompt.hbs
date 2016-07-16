@@ -6,27 +6,35 @@
     </div>
   {{/if}}
 
-  {{#if model.showingTimer}}
-    {{countdown-timer countdown=model}}
-  {{/if}}
-
   {{#if model.showingCountdown}}
     <div class="timer-message__container">
       <object type="image/svg+xml" data="/get-creative-clock.svg"class="get-creative-clock"></object>
       {{timer-message}}
     </div>
+  {{else}}
+    <div class="countdown-timer">
+      {{#if model.countdownFinished}}
+        <p class="small-text align-center">Yay!!! You did it. Tune in tomorrow for another prompt.</p>
+        <h2 class="large-text">DONEZO!</h2>
+        <span class="circle circle-top"></span>
+        <span class="circle circle-top-middle"></span>
+        <span class="circle circle-top-right"></span>
+        <span class="circle circle-bottom-left"></span>
+        <span class="circle circle-bottom-middle"></span>
+        <span class="circle circle-bottom-right"></span>
+        <p class="small-text align-right">#promptmeXYZ</p>
+
+        {{falling-shapes}}
+      {{else}}
+        <div class="remaining-time__container">
+          {{#if model.showingTimer}}
+            <div class="remaining-time">{{model.remainingTimeString}}</div>
+          {{/if}}
+          <p class="prompt">{{model.prompt}}</p>
+
+          <object type="image/svg+xml" data="/countdown-shapes.svg"class="countdown-shapes"></object>
+        </div>
+      {{/if}}
+    </div>
   {{/if}}
 </div>
-
-{{!-- {{#if model.didRefresh}}
-  <div class="align-right refresh-message__container">
-    <p class="refresh-message">Woops! You refreshed.</p>
-    <p class="refresh-message">Here’s where you left off…</p>
-  </div>
-{{/if}}
-
-{{#if model.showingCountdown}}
-  {{timer-message}}
-{{/if}}
-
-{{countdown-timer countdown=model}} --}}

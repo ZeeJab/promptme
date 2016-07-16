@@ -9,10 +9,10 @@ export default Component.extend({
   didInsertElement() {
     run.later(() => {
       this.set('timerMessage', "2");
-    }, 2000);
+    }, 1000);
 
     run.later(() => {
       this.set('timerMessage', "1");
-    }, 4000);
+    }, 2000);
   }
 });

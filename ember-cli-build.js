@@ -1,16 +1,11 @@
 /*jshint node:true*/
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var stew = require('broccoli-stew');
+var merge = require('broccoli-merge-trees');
 
 module.exports = function(defaults) {
-  var app = new EmberApp(defaults, {
-    outputPaths: {
-      app: {
-        html: '200.html'
-      }
-    }
-    // Add options here
-  });
+  var app = new EmberApp(defaults);
 
   // Use `app.import` to add additional libraries to the generated
   // output files.
@@ -25,5 +20,7 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  return app.toTree();
+  var appTree = app.toTree();
+  var htmlTree = stew.mv(stew.find(appTree, 'index.html'), 'index.html', '200.html');
+  return merge([appTree, htmlTree]);
 };

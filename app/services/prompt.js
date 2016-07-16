@@ -123,8 +123,9 @@ const prompts = [
   "Sharing spaces trading places"
 ];
 
-export const PROMPT_TIMEOUT = 1197 * 1000;
-export const PROMPT_DELAY = 6 * 1000;
+// export const PROMPT_TIMEOUT = 1197 * 1000;
+export const PROMPT_TIMEOUT = 20 * 1000;
+export const PROMPT_DELAY = 3 * 1000;
 
 export default Service.extend({
   init() {
@@ -159,6 +160,8 @@ export default Service.extend({
       info.didRefresh = true;
     } else if (didCompletePrompt(info)) {
       info.didComplete = true;
+    } else {
+      info = this.buildPromptInfo();
     }
 
     info.prompt = prompts[info.promptIndex];
@@ -168,9 +171,9 @@ export default Service.extend({
   },
 
   getPastPrompts() {
-    let promptIndex = Math.floor((Date.now() - (new Date(0))) / (1000 * 60 * 60 * 24)) % prompts.length;
+    let promptIndex = getPromptIndex();
 
-    return prompts.slice(0, promptIndex-1);
+    return prompts.slice(0, promptIndex);
   },
 
   buildPromptInfo() {
@@ -187,9 +190,7 @@ export default Service.extend({
 });
 
 function getPromptIndex() {
-  // Calculate number of days since epoch, then take that modulo the number
-  // of prompt entries, which determines which one is today's prompt.
-  return Math.floor((Date.now() - (new Date(0))) / (1000 * 60 * 60 * 24)) % prompts.length;
+  return Math.floor((Date.now() - new Date('2016-07-10 EDT')) / (1000 * 60 * 60 * 24));
 }
 
 function didCompletePrompt(info) {

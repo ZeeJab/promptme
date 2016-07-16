@@ -25,15 +25,5 @@ export default Ember.Component.extend({
     }, 100);
   }),
 
-  remainingTime: computed('countdown.remainingTime', function() {
-    let seconds = this.get('countdown.remainingTime');
 
-    let minutes = Math.floor(seconds / 60);
-    seconds = seconds - (minutes * 60);
-
-    seconds = ("0" + seconds).slice(-2);
-    minutes = minutes === 0 ? '' : minutes;
-
-    return `${minutes}:${seconds}`;
-  }),
 });
