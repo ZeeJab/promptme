@@ -190,7 +190,7 @@ export default Service.extend({
 });
 
 function getPromptIndex() {
-  return Math.floor((Date.now() - new Date('2016-07-10 EDT')) / (1000 * 60 * 60 * 24));
+  return Math.floor((Date.now() - new Date("2016-07-10T04:00:00.000Z")) / (1000 * 60 * 60 * 24));
 }
 
 function didCompletePrompt(info) {
