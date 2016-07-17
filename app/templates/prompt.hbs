@@ -14,8 +14,10 @@
   {{else}}
     <div class="countdown-timer">
       {{#if model.countdownFinished}}
+        <audio src="/sound.wav" autoplay loop></audio>
         <p class="small-text align-center">Yay!!! You did it. Tune in tomorrow for another prompt.</p>
         <h2 class="large-text">DONEZO!</h2>
+
         <span class="circle circle-top"></span>
         <span class="circle circle-top-middle"></span>
         <span class="circle circle-top-right"></span>
