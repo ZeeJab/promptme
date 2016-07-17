@@ -123,8 +123,7 @@ const prompts = [
   "Sharing spaces trading places"
 ];
 
-// export const PROMPT_TIMEOUT = 1197 * 1000;
-export const PROMPT_TIMEOUT = 20 * 1000;
+export const PROMPT_TIMEOUT = 1197 * 1000;
 export const PROMPT_DELAY = 3 * 1000;
 
 export default Service.extend({
