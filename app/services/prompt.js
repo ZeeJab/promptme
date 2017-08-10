@@ -172,7 +172,7 @@ export default Service.extend({
   getPastPrompts() {
     let promptIndex = getPromptIndex();
 
-    return prompts.slice(0, promptIndex);
+    return prompts.slice(promptIndex, prompts.length);
   },
 
   buildPromptInfo() {
@@ -189,7 +189,8 @@ export default Service.extend({
 });
 
 function getPromptIndex() {
-  return Math.floor((Date.now() - new Date("2016-07-10T04:00:00.000Z")) / (1000 * 60 * 60 * 24));
+  let daysSinceLaunch = Math.floor((Date.now() - new Date("2016-07-10T04:00:00.000Z")) / (1000 * 60 * 60 * 24));
+  return prompts.length-(daysSinceLaunch%prompts.length);
 }
 
 function didCompletePrompt(info) {
